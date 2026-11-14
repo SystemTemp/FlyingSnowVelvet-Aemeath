@@ -1,0 +1,25 @@
+# 构建产物
+build/
+dist/
+out/
+*.obj
+*.pdb
+*.ilk
+*.lib
+*.exp
+*.exe
+!installer/*.cmd
+
+# IDE
+.vs/
+.vscode/
+*.user
+*.suo
+CMakeUserPresets.json
+compile_commands.json
+
+# 运行期数据（本仓库不再产生，留作防御）
+logs/
+cache/
+resc/user/
+py.ini

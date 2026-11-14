@@ -1,0 +1,41 @@
+#include <windows.h>
+
+#pragma code_page(65001)
+
+#define AEMEATH_VERSION_MAJOR 0
+#define AEMEATH_VERSION_MINOR 1
+#define AEMEATH_VERSION_PATCH 0
+#define AEMEATH_VERSION_BUILD 0
+
+#define AEMEATH_FILE_VERSION \
+    AEMEATH_VERSION_MAJOR, AEMEATH_VERSION_MINOR, AEMEATH_VERSION_PATCH, AEMEATH_VERSION_BUILD
+#define AEMEATH_PRODUCT_VERSION AEMEATH_FILE_VERSION
+
+VS_VERSION_INFO VERSIONINFO
+    FILEVERSION AEMEATH_FILE_VERSION
+    PRODUCTVERSION AEMEATH_PRODUCT_VERSION
+    FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+    FILEFLAGS 0x0L
+    FILEOS VOS_NT_WINDOWS32
+    FILETYPE VFT_APP
+    FILESUBTYPE VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "CompanyName", "SystemTemp"
+            VALUE "FileDescription", "FlyingSnowVelvet Aemeath C++ Desktop Pet"
+            VALUE "FileVersion", "0.1.0.0"
+            VALUE "InternalName", "AemeathPet.Host"
+            VALUE "LegalCopyright", "See LICENSE-CODE in the repository"
+            VALUE "OriginalFilename", "AemeathPet.Host.exe"
+            VALUE "ProductName", "FlyingSnowVelvet-Aemeath (C++)"
+            VALUE "ProductVersion", "0.1.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0804, 0x04b0
+    END
+END

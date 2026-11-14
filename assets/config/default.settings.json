@@ -1,0 +1,26 @@
+{
+  "pet": {
+    "topMost": true,
+    "clickThrough": false,
+    "scale": 1.0,
+    "x": 100,
+    "y": 100,
+    "characterId": "default"
+  },
+  "chat": {
+    "enabled": true,
+    "provider": "mock",
+    "endpoint": "",
+    "model": "",
+    "personaPath": "assets/persona.txt"
+  },
+  "voice": {
+    "textToSpeechEnabled": false,
+    "speechRecognitionEnabled": false,
+    "language": "zh-CN"
+  },
+  "music": {
+    "enabled": false,
+    "volume": 0.7
+  }
+}

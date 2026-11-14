@@ -1,0 +1,29 @@
+<Window
+    x:Class="AemeathPet.WinUI.PetWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid x:Name="Root" Background="Transparent"
+          PointerPressed="Root_PointerPressed"
+          PointerMoved="Root_PointerMoved"
+          PointerReleased="Root_PointerReleased"
+          RightTapped="Root_RightTapped">
+        <Border Width="180" Height="180" CornerRadius="90" Background="#22FFFFFF" BorderBrush="#66FFFFFF" BorderThickness="1">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+                <TextBlock Text="❄" FontSize="52" HorizontalAlignment="Center" />
+                <TextBlock Text="Flying Snow" FontSize="16" HorizontalAlignment="Center" />
+                <TextBlock Text="C++ MVP" FontSize="12" Opacity="0.7" HorizontalAlignment="Center" />
+            </StackPanel>
+        </Border>
+
+        <MenuFlyout x:Name="PetMenu">
+            <MenuFlyoutItem Text="聊天" Click="ChatMenu_Click" />
+            <MenuFlyoutItem Text="设置" Click="SettingsMenu_Click" />
+            <MenuFlyoutSeparator />
+            <MenuFlyoutItem Text="退出" Click="ExitMenu_Click" />
+        </MenuFlyout>
+    </Grid>
+</Window>

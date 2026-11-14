@@ -1,0 +1,13 @@
+#include "Aemeath/Infrastructure/Json/SimpleJson.h"
+#include <charconv>
+#include <cmath>
+#include <iomanip>
+#include <sstream>
+namespace Aemeath::Infrastructure::Json { namespace {
+class Parser{std::string_view s;size_t p=0; void ws(){while(p<s.size()&&std::isspace((unsigned char)s[p]))++p;} char get(){if(p>=s.size())throw std::runtime_error("unexpected end of JSON");return s[p++];} void expect(char c){ws();if(get()!=c)throw std::runtime_error("invalid JSON");}
+ std::string str(){expect('"');std::string o;while(true){char c=get();if(c=='"')return o;if(c=='\\'){c=get();switch(c){case 'n':o+='\n';break;case 'r':o+='\r';break;case 't':o+='\t';break;case '"':case'\\':case'/':o+=c;break;default:throw std::runtime_error("unsupported JSON escape");}}else o+=c;}}
+ Value val(){ws();if(p>=s.size())throw std::runtime_error("empty JSON");char c=s[p];if(c=='{'){++p;Value::Object o;ws();if(p<s.size()&&s[p]=='}'){++p;return o;}while(true){auto k=str();expect(':');o.emplace(std::move(k),val());ws();c=get();if(c=='}')break;if(c!=',')throw std::runtime_error("invalid object");}return o;}if(c=='['){++p;Value::Array a;ws();if(p<s.size()&&s[p]==']'){++p;return a;}while(true){a.push_back(val());ws();c=get();if(c==']')break;if(c!=',')throw std::runtime_error("invalid array");}return a;}if(c=='"')return str();if(s.substr(p,4)=="true"){p+=4;return true;}if(s.substr(p,5)=="false"){p+=5;return false;}if(s.substr(p,4)=="null"){p+=4;return nullptr;}size_t b=p;while(p<s.size()&&std::string_view("-+0123456789.eE").find(s[p])!=std::string_view::npos)++p;double n=0;auto t=std::string(s.substr(b,p-b));try{n=std::stod(t);}catch(...){throw std::runtime_error("invalid number");}return n;}
+public:explicit Parser(std::string_view x):s(x){} Value parse(){auto x=val();ws();if(p!=s.size())throw std::runtime_error("trailing JSON");return x;}};
+std::string esc(std::string_view s){std::string o="\"";for(char c:s){switch(c){case'"':o+="\\\"";break;case'\\':o+="\\\\";break;case'\n':o+="\\n";break;case'\r':o+="\\r";break;case'\t':o+="\\t";break;default:o+=c;}}return o+'"';}
+std::string out(const Value&v){if(std::holds_alternative<std::nullptr_t>(v.v))return"null";if(v.IsBool())return v.AsBool()?"true":"false";if(v.IsNumber()){std::ostringstream x;x<<std::setprecision(15)<<v.AsNumber();return x.str();}if(v.IsString())return esc(v.AsString());if(v.IsArray()){std::string o="[";for(auto&i:v.AsArray()){if(o.size()>1)o+=',';o+=out(i);}return o+"]";}std::string o="{";for(auto&[k,x]:v.AsObject()){if(o.size()>1)o+=',';o+=esc(k)+":"+out(x);}return o+"}";}
+} Value Parse(std::string_view t){return Parser(t).parse();} std::string Stringify(const Value&v){return out(v);} }

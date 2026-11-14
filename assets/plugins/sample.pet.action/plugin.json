@@ -1,0 +1,22 @@
+{
+  "id": "sample.pet.action",
+  "name": "示例桌宠动作插件",
+  "version": "1.0.0",
+  "author": "Aemeath",
+  "description": "声明式插件示例：贡献一个挥手动作。",
+  "entry": {
+    "type": "manifest"
+  },
+  "permissions": [
+    "pet.action"
+  ],
+  "contributes": {
+    "petActions": [
+      {
+        "id": "sample-wave",
+        "name": "挥手",
+        "animation": "wave"
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "version": "1.0.0",
+  "channel": "stable",
+  "releaseNotes": "示例更新清单。正式地址由后端或发布仓库提供。",
+  "downloadUrl": "",
+  "sha256": "",
+  "mandatory": false
+}

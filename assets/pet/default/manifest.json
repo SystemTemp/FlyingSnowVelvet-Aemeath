@@ -1,0 +1,49 @@
+{
+  "id": "default",
+  "name": "飞行雪绒（默认形象）",
+  "scale": 1.0,
+  "animations": {
+    "idle": {
+      "fps": 8,
+      "loop": true,
+      "frames": [
+        "idle/0.png",
+        "idle/1.png",
+        "idle/2.png",
+        "idle/3.png",
+        "idle/4.png",
+        "idle/5.png"
+      ]
+    },
+    "drag": {
+      "fps": 6,
+      "loop": true,
+      "frames": [
+        "drag/0.png",
+        "drag/1.png"
+      ]
+    },
+    "talk": {
+      "fps": 10,
+      "loop": true,
+      "frames": [
+        "talk/0.png",
+        "talk/1.png",
+        "talk/2.png",
+        "talk/3.png",
+        "talk/4.png",
+        "talk/5.png"
+      ]
+    },
+    "wave": {
+      "fps": 8,
+      "loop": true,
+      "frames": [
+        "wave/0.png",
+        "wave/1.png",
+        "wave/2.png",
+        "wave/3.png"
+      ]
+    }
+  }
+}
