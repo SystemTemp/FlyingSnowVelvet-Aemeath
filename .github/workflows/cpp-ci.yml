@@ -9,7 +9,7 @@ on:
 jobs:
   windows-build-test:
     name: Windows x64 build & test
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,3 +35,4 @@ jobs:
           path: |
             build/**/AemeathPet.exe
             assets/**
+

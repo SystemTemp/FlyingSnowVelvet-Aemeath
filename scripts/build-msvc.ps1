@@ -115,7 +115,7 @@ try {
     Write-Host "构建成功：$buildDir"
 
     if ($RunTests) {
-        $testExe = Join-Path $buildDir 'AemeathPet.Tests.exe'
+        $testExe = Join-Path $buildDir 'bin\AemeathPet.Tests.exe'
         if (-not (Test-Path $testExe)) { throw "找不到测试程序：$testExe" }
         Write-Host '---- test ----'
         & $testExe
