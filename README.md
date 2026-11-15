@@ -24,7 +24,7 @@
 | 设置持久化 | ✅ | JSON 稀疏读写 + 原子替换（tmp → rename） |
 | 论坛/留言墙 API | ✅ | 10 个端点的完整客户端（登录/发帖/回复/点赞/图片/标签），Bearer、UA 与原版一致 |
 | 日志 / 单实例 / 用户目录 | ✅ | `%LOCALAPPDATA%\AemeathDeskPet\{user,cache,logs}` |
-| 自动化测试 | ✅ | 39 个用例，覆盖事件总线、JSON、设置、HTTP、动画、聊天 SSE、论坛解析 |
+| 自动化测试 | ✅ | 40 个用例，覆盖事件总线、JSON、设置、HTTP、动画、聊天 SSE、论坛解析 |
 | 在线安装 | ✅ | `installer/install-online.ps1`（免编译，从 Release 下载）或 `-FromSource`（gh clone + 本地构建） |
 | CI | ✅ | GitHub Actions：MSVC 构建 + 跑测试 |
 
@@ -57,7 +57,7 @@ pwsh -File scripts/build-msvc.ps1 -Configuration Release -RunTests
 ```powershell
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 cmake --build build
-.\build\bin\AemeathPet.Tests.exe     # 39 个用例
+.\build\bin\AemeathPet.Tests.exe     # 40 个用例
 .\build\bin\AemeathPet.exe           # 启动桌宠
 ```
 
@@ -120,7 +120,7 @@ src/
   AemeathPet.Infrastructure/ WinHTTP、JSON、设置、OpenAI 兼容 SSE、Ollama、论坛客户端、资源加载
   AemeathPet.Application/  编排层（AppController）
   AemeathPet.Host/         Win32 宿主：桌宠窗口、D2D 渲染、托盘、设置/聊天窗口、入口
-  AemeathPet.Tests/        39 个自研断言用例
+  AemeathPet.Tests/        40 个自研断言用例
   AemeathPet.WinUI/        （保留）WinUI 3 前端骨架，不参与主构建
 ```
 
